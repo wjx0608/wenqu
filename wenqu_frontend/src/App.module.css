@@ -1,0 +1,24 @@
+.boot {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-3);
+  min-height: 100%;
+  padding: var(--space-10);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-display);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-strong);
+}
+
+.slogan {
+  color: var(--color-text-muted);
+}
+
+.meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}

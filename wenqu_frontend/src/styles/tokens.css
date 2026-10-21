@@ -1,0 +1,172 @@
+/**
+ * 问渠设计 token
+ * 色系：墨青（brand）+ 宣纸白（neutral），与暖橙奶油色调明确区分。
+ * 约定：组件只消费语义变量（--color-*），不直接使用色阶（--brand-*）。
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- 品牌色阶 · 墨青 ---------- */
+  --brand-50: #edf5f3;
+  --brand-100: #d6e8e4;
+  --brand-200: #aecfc9;
+  --brand-300: #82b3ab;
+  --brand-400: #509387;
+  --brand-500: #2a6f66;
+  --brand-600: #1f5f58;
+  --brand-700: #184c46;
+  --brand-800: #113936;
+  --brand-900: #0b2825;
+
+  /* ---------- 语义色 ---------- */
+  --color-brand: var(--brand-600);
+  --color-brand-hover: var(--brand-700);
+  --color-brand-active: var(--brand-800);
+  --color-brand-soft: var(--brand-50);
+  --color-brand-soft-hover: var(--brand-100);
+  --color-on-brand: #ffffff;
+
+  --color-accent: #3c6e8f;
+  --color-accent-soft: #e7eff5;
+
+  --color-bg: #f6f7f5;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #edf0ed;
+  --color-surface-overlay: rgba(18, 33, 31, 0.32);
+
+  --color-text-strong: #12211f;
+  --color-text: #33413f;
+  --color-text-muted: #6a7a77;
+  --color-text-inverse: #f7faf9;
+
+  --color-border: #dde3e0;
+  --color-border-strong: #c6cfcb;
+  --color-divider: rgba(18, 33, 31, 0.08);
+
+  --color-success: #2f7d5a;
+  --color-success-soft: #e8f3ed;
+  --color-warning: #b07b2e;
+  --color-warning-soft: #f8f0e0;
+  --color-danger: #a8433a;
+  --color-danger-soft: #f8eae8;
+
+  --color-code-bg: #f1f3f1;
+
+  /* ---------- 字体 ---------- */
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', 'Menlo', monospace;
+
+  /* ---------- 字号 / 行高 ---------- */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-3xl: 34px;
+  --text-display: 44px;
+
+  --leading-tight: 1.3;
+  --leading-normal: 1.7;
+  --leading-loose: 1.9;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.06em;
+
+  /* ---------- 间距（4px 基准） ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ---------- 圆角（小圆角，方正克制） ---------- */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* ---------- 描边与阴影 ---------- */
+  --border-width: 1px;
+  --shadow-xs: 0 1px 2px rgba(18, 33, 31, 0.05);
+  --shadow-sm: 0 2px 6px rgba(18, 33, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(18, 33, 31, 0.08);
+  --focus-ring: 0 0 0 3px rgba(31, 95, 88, 0.22);
+
+  /* ---------- 布局 ---------- */
+  --layout-header: 60px;
+  --layout-nav: 236px;
+  --layout-aside: 360px;
+  --layout-content-max: 760px;
+  --layout-page-max: 1440px;
+
+  /* ---------- 动效 ---------- */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* ---------- 层级 ---------- */
+  --z-header: 100;
+  --z-dropdown: 500;
+  --z-overlay: 900;
+  --z-modal: 1000;
+  --z-toast: 1100;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-brand: #6fbfb1;
+  --color-brand-hover: #85cdbf;
+  --color-brand-active: #9ad9cd;
+  --color-brand-soft: #17322e;
+  --color-brand-soft-hover: #1d413c;
+  --color-on-brand: #06201c;
+
+  --color-accent: #7fa9c6;
+  --color-accent-soft: #1a2a35;
+
+  --color-bg: #0d1514;
+  --color-surface: #16211f;
+  --color-surface-sunken: #101b19;
+  --color-surface-overlay: rgba(0, 0, 0, 0.56);
+
+  --color-text-strong: #e9f1ee;
+  --color-text: #c3d2ce;
+  --color-text-muted: #8ca29d;
+  --color-text-inverse: #0d1514;
+
+  --color-border: #26332f;
+  --color-border-strong: #35443f;
+  --color-divider: rgba(233, 241, 238, 0.08);
+
+  --color-success: #63b98e;
+  --color-success-soft: #16302a;
+  --color-warning: #d5a45e;
+  --color-warning-soft: #2f2718;
+  --color-danger: #d98b81;
+  --color-danger-soft: #331e1b;
+
+  --color-code-bg: #101b19;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --focus-ring: 0 0 0 3px rgba(111, 191, 177, 0.32);
+}
