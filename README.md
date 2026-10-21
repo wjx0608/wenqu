@@ -19,8 +19,8 @@
 
 ```
 wenqu/
-├── wenqu_frontend/   # 前端（React + Vite）
-└── wenqu_backend/    # 后端（迁移整理中）
+├── wenqu_frontend/   # 前端
+└── wenqu_backend/    # 后端
 ```
 
 ## 本地启动
