@@ -1,13 +1,11 @@
-import styles from './App.module.css'
+import { UiGallery } from '@/dev/UiGallery'
 
+/**
+ * 阶段 1 临时入口：只渲染组件自查页。
+ * 阶段 2 接入 React Router 后，此文件将改为路由装配（AppRouter）。
+ */
 function App() {
-  return (
-    <main className={styles.boot}>
-      <h1 className={styles.title}>问渠</h1>
-      <p className={styles.slogan}>有源之问，方有清渠之答</p>
-      <p className={styles.meta}>设计 token 已就绪 · v0.1.0</p>
-    </main>
-  )
+  return <UiGallery />
 }
 
 export default App
