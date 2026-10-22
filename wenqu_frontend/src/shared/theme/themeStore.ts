@@ -24,24 +24,31 @@ export function resolveTheme(mode: ThemeMode): ResolvedTheme {
 }
 
 interface ThemeState {
+  /** 用户偏好，首次进入默认跟随系统 */
   mode: ThemeMode
+  /** 实际生效的主题，由 ThemeSync 回写，供 UI 直接消费 */
+  resolved: ResolvedTheme
   setMode: (mode: ThemeMode) => void
-  /** 依次在 亮色 → 暗色 → 跟随系统 之间切换 */
-  cycle: () => void
+  /** 亮色与暗色之间直接切换；「跟随系统」只作为初始默认值，不参与循环 */
+  toggle: () => void
+  setResolved: (resolved: ResolvedTheme) => void
 }
-
-const cycleOrder: ThemeMode[] = ['light', 'dark', 'system']
 
 export const useThemeStore = create<ThemeState>((set, get) => ({
   mode: readStoredTheme(),
+  resolved: resolveTheme(readStoredTheme()),
   setMode: (mode) => {
     localStorage.setItem(STORAGE_KEY, mode)
     set({ mode })
   },
-  cycle: () => {
-    const index = cycleOrder.indexOf(get().mode)
-    const next = cycleOrder[(index + 1) % cycleOrder.length]
+  toggle: () => {
+    const next: ResolvedTheme = get().resolved === 'dark' ? 'light' : 'dark'
     localStorage.setItem(STORAGE_KEY, next)
-    set({ mode: next })
+    set({ mode: next, resolved: next })
+  },
+  setResolved: (resolved) => {
+    if (get().resolved !== resolved) {
+      set({ resolved })
+    }
   },
 }))

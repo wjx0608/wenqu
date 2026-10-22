@@ -8,10 +8,13 @@ import { resolveTheme, useThemeStore } from './themeStore'
  */
 export function ThemeSync() {
   const mode = useThemeStore((state) => state.mode)
+  const setResolved = useThemeStore((state) => state.setResolved)
 
   useEffect(() => {
     const apply = () => {
-      document.documentElement.dataset.theme = resolveTheme(mode)
+      const resolved = resolveTheme(mode)
+      document.documentElement.dataset.theme = resolved
+      setResolved(resolved)
     }
 
     apply()
@@ -23,7 +26,7 @@ export function ThemeSync() {
     const media = window.matchMedia('(prefers-color-scheme: dark)')
     media.addEventListener('change', apply)
     return () => media.removeEventListener('change', apply)
-  }, [mode])
+  }, [mode, setResolved])
 
   return null
 }
