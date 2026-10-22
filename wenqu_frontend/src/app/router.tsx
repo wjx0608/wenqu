@@ -26,9 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'learn',
-        element: (
-          <PlaceholderPage title="我的学习" description="收藏与阅读进度会在阶段 6 接入。" />
-        ),
+        element: <PlaceholderPage title="我的学习" description="收藏与阅读进度会在阶段 6 接入。" />,
       },
       {
         path: 'profile',

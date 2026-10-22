@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
 
+import { ThemeToggle } from '@/shared/theme/ThemeToggle'
 import { Button } from '@/shared/ui'
 
 import styles from './AppLayout.module.css'
@@ -25,6 +26,7 @@ export function AppLayout() {
         </Link>
 
         <div className={styles.headerActions}>
+          <ThemeToggle />
           <Button size="sm">写知文</Button>
         </div>
       </header>
