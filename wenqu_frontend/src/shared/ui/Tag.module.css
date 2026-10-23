@@ -98,7 +98,3 @@
   background-color: var(--color-fill-hover);
   opacity: 1;
 }
-
-.selected .remove:hover {
-  background-color: rgb(0 0 0 / 18%);
-}
