@@ -1,0 +1,46 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.sm {
+  padding: 1px var(--space-2);
+  font-size: var(--text-xs);
+}
+
+.md {
+  padding: 2px var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.neutral {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+}
+
+.brand {
+  background: var(--color-brand-subtle);
+  color: var(--color-brand);
+}
+
+.moss {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  opacity: 0.7;
+}
+
+.remove:hover {
+  opacity: 1;
+}
