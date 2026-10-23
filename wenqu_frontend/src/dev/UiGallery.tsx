@@ -1,22 +1,8 @@
 import { useState } from 'react'
 
-import { Button, Card, EmptyState, Input, Skeleton, Tag } from '@/shared/ui'
+import { Button, Card, EmptyState, Icon, Input, Skeleton, Tag } from '@/shared/ui'
 
 import styles from './UiGallery.module.css'
-
-const SearchIcon = (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-  >
-    <circle cx="11" cy="11" r="7" />
-    <path d="m20 20-3.6-3.6" strokeLinecap="round" />
-  </svg>
-)
 
 export function UiGallery() {
   const [selectedCategory, setSelectedCategory] = useState('后端')
@@ -185,7 +171,7 @@ export function UiGallery() {
         <h2 className={styles.sectionTitle}>EmptyState</h2>
         <Card padding="none">
           <EmptyState
-            icon={SearchIcon}
+            icon={<Icon name="search" size={22} />}
             title="没有找到相关知文"
             description="试试更宽泛的关键词，或者切换左侧分区浏览最近发布的内容。"
             action={

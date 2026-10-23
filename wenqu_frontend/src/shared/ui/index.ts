@@ -15,3 +15,6 @@ export type { SkeletonProps } from './Skeleton'
 
 export { EmptyState } from './EmptyState'
 export type { EmptyStateProps } from './EmptyState'
+
+export { Icon } from './Icon'
+export type { IconName, IconProps } from './Icon'
