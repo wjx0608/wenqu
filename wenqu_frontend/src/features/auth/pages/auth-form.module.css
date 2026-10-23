@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.codeRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.codeRow > div:first-child {
+  flex: 1;
+}
+
+.codeButton {
+  height: 36px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+}
+
+.agree {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.agree input {
+  margin-top: 3px;
+  accent-color: var(--color-brand);
+}
+
+.agreeError {
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+  margin-top: calc(-1 * var(--space-2));
+}
