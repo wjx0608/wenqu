@@ -5,6 +5,7 @@ import { LikeFavBar } from '@/features/interaction/LikeFavBar'
 import { fetchPostContent, getPostDetail } from '@/features/post/api'
 import { ImageGallery } from '@/features/post/ImageGallery'
 import { Markdown } from '@/features/post/Markdown'
+import { QaPanel } from '@/features/post/QaPanel'
 import { FollowButton } from '@/features/relation/FollowButton'
 import { isApiError } from '@/shared/api/error'
 import { formatRelativeTime } from '@/shared/utils/time'
@@ -145,6 +146,8 @@ export function PostDetailPage() {
           <FollowButton authorId={post.authorId} />
         </section>
       </article>
+
+      {post.visible === 'public' && <QaPanel postId={post.id} />}
     </div>
   )
 }
