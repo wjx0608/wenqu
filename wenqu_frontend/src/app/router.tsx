@@ -10,9 +10,8 @@ import { EditorPage } from '@/features/editor/EditorPage'
 import { RequireAuth } from '@/features/auth/RequireAuth'
 import { EditProfilePage } from '@/features/profile/EditProfilePage'
 import { ProfilePage } from '@/features/profile/ProfilePage'
+import { SearchPage } from '@/features/search/SearchPage'
 import { AppLayout } from '@/layouts/AppLayout'
-
-const placeholder = (text: string) => <div>{text}</div>
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/post/:id', element: <PostDetailPage /> },
-      { path: '/search', element: placeholder('搜索 · 重构中') },
+      { path: '/search', element: <SearchPage /> },
       {
         path: '/create',
         element: (
