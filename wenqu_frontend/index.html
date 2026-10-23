@@ -3,31 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="问渠 · 面向技术内容创作、检索与智能问答的分享平台" />
-    <title>问渠 · 技术内容分享平台</title>
-    <style>
-      /* CSS 加载前先铺底色，避免首屏出现一帧白屏 */
-      html {
-        background-color: #f3f6f3;
-      }
-
-      html[data-theme='dark'] {
-        background-color: #0f1615;
-      }
-    </style>
-    <script>
-      // 首屏前确定主题，避免暗色模式下出现白屏闪烁
-      ;(function () {
-        try {
-          var mode = localStorage.getItem('wenqu_theme')
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          var dark = mode === 'dark' || ((!mode || mode === 'system') && prefersDark)
-          document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-        } catch (error) {
-          document.documentElement.dataset.theme = 'light'
-        }
-      })()
-    </script>
+    <meta name="description" content="问渠 · 技术内容分享平台" />
+    <title>问渠</title>
   </head>
   <body>
     <div id="root"></div>
