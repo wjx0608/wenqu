@@ -1,0 +1,165 @@
+/* ============================================================
+ * 问渠设计 Token · 天青 × 竹纸
+ * 结构：基础色阶（原始值）→ 语义层（组件只引用语义变量）
+ * 暗色主题「黛底青辉」挂在 html[data-theme='dark']
+ * ============================================================ */
+
+:root {
+  /* ---------- 基础色阶 · 天青（品牌） ---------- */
+  --wq-celadon-50: #f1f5f4;
+  --wq-celadon-100: #e2ebe9;
+  --wq-celadon-200: #c4d5d2;
+  --wq-celadon-300: #9db8b5;
+  --wq-celadon-400: #729693;
+  --wq-celadon-500: #567a79;
+  --wq-celadon-600: #4a6b6f;
+  --wq-celadon-700: #3b575b;
+  --wq-celadon-800: #2f4548;
+  --wq-celadon-900: #243436;
+
+  /* ---------- 基础色阶 · 苔绿（缀色） ---------- */
+  --wq-moss-100: #e7ede4;
+  --wq-moss-300: #aec3a8;
+  --wq-moss-500: #5c7c5a;
+  --wq-moss-600: #4a6549;
+
+  /* ---------- 状态色 ---------- */
+  --wq-red-500: #b04a3f;
+  --wq-red-600: #97392f;
+  --wq-amber-500: #a97a2c;
+  --wq-amber-100: #f4ecd8;
+  --wq-red-100: #f3e2df;
+
+  /* ---------- 语义层 · 颜色（亮色） ---------- */
+  --color-bg: #f3f6f3; /* 竹纸 */
+  --color-surface: #ffffff; /* 卡片 */
+  --color-surface-sunken: #e8eee9; /* 凹陷填充 */
+  --color-overlay: rgb(31 43 41 / 0.4);
+
+  --color-text: #1f2b29; /* 墨 · 标题/强调 */
+  --color-text-body: #3d4a47; /* 正文 */
+  --color-text-secondary: #5f6f68; /* 次要 */
+  --color-text-placeholder: #93a29a;
+  --color-text-onbrand: #f4f8f6;
+
+  --color-border: #d8e0da;
+  --color-border-strong: #bcc9c1;
+
+  --color-brand: var(--wq-celadon-600);
+  --color-brand-hover: var(--wq-celadon-700);
+  --color-brand-active: var(--wq-celadon-800);
+  --color-brand-subtle: var(--wq-celadon-100); /* 品牌浅底 */
+  --color-brand-subtle-hover: var(--wq-celadon-200);
+
+  --color-accent: var(--wq-moss-500);
+  --color-accent-subtle: var(--wq-moss-100);
+
+  --color-danger: var(--wq-red-500);
+  --color-danger-hover: var(--wq-red-600);
+  --color-danger-subtle: var(--wq-red-100);
+  --color-warning: var(--wq-amber-500);
+  --color-warning-subtle: var(--wq-amber-100);
+  --color-success: var(--wq-moss-500);
+  --color-success-subtle: var(--wq-moss-100);
+
+  /* ---------- 阴影（克制，以描边为主） ---------- */
+  --shadow-1: 0 1px 2px rgb(31 43 41 / 0.05);
+  --shadow-2: 0 2px 8px rgb(31 43 41 / 0.07);
+  --shadow-3: 0 8px 28px rgb(31 43 41 / 0.12);
+
+  /* ---------- 字体 ---------- */
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-sans:
+    'Inter', -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* ---------- 字号 / 行高 ---------- */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+  --text-4xl: 34px;
+  --leading-tight: 1.35;
+  --leading-body: 1.75;
+
+  /* ---------- 圆角（小圆角，禁止 >10px） ---------- */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-full: 999px;
+
+  /* ---------- 间距 ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ---------- 布局常量 ---------- */
+  --topbar-h: 60px;
+  --sidenav-w: 236px;
+  --content-w: 760px;
+  --qa-panel-w: 360px;
+
+  /* ---------- 层级 ---------- */
+  --z-sticky: 20;
+  --z-header: 50;
+  --z-dropdown: 80;
+  --z-modal: 100;
+  --z-toast: 200;
+
+  /* ---------- 动效 ---------- */
+  --ease-out: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+
+  color-scheme: light;
+}
+
+/* ---------- 暗色 · 黛底青辉 ---------- */
+html[data-theme='dark'] {
+  --color-bg: #0f1615;
+  --color-surface: #17201f;
+  --color-surface-sunken: #121a19;
+  --color-overlay: rgb(0 0 0 / 0.55);
+
+  --color-text: #e4ece8;
+  --color-text-body: #c2cfc9;
+  --color-text-secondary: #8fa39a;
+  --color-text-placeholder: #5f7169;
+  --color-text-onbrand: #0f1615;
+
+  --color-border: #26322f;
+  --color-border-strong: #3a4a45;
+
+  --color-brand: #83abaa;
+  --color-brand-hover: #9dbfbc;
+  --color-brand-active: #b6cfcc;
+  --color-brand-subtle: #1d2c2a;
+  --color-brand-subtle-hover: #243936;
+
+  --color-accent: #8fae8a;
+  --color-accent-subtle: #1e2a1e;
+
+  --color-danger: #cf7a6e;
+  --color-danger-hover: #db8f84;
+  --color-danger-subtle: #312019;
+  --color-warning: #cfa65c;
+  --color-warning-subtle: #2c2515;
+  --color-success: #8fae8a;
+  --color-success-subtle: #1e2a1e;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 2px 8px rgb(0 0 0 / 0.4);
+  --shadow-3: 0 8px 28px rgb(0 0 0 / 0.5);
+
+  color-scheme: dark;
+}
