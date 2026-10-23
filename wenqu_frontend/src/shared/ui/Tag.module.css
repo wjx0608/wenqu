@@ -4,7 +4,7 @@
   gap: var(--space-1);
   max-width: 100%;
   border: var(--border-width) solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   font-family: var(--font-sans);
   line-height: 1;
   white-space: nowrap;
@@ -26,6 +26,11 @@
   font-size: var(--text-sm);
 }
 
+/* 带移除按钮时右侧收紧，避免视觉重心偏移 */
+.base:has(.remove) {
+  padding-right: var(--space-1);
+}
+
 .default {
   background-color: var(--color-surface-sunken);
   color: var(--color-text);
@@ -42,45 +47,58 @@
   color: var(--color-text-muted);
 }
 
+/* ---------- 可点击 ---------- */
 .interactive {
   cursor: pointer;
 }
 
-.interactive:hover {
+.interactive.default:hover {
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-strong);
+  border-color: var(--color-border-strong);
+}
+
+.interactive.brand:hover {
+  background-color: var(--color-brand-soft-hover);
+  color: var(--color-brand-hover);
+}
+
+.interactive.outline:hover {
   border-color: var(--color-brand);
   color: var(--color-brand);
 }
 
-.selected {
+.selected,
+.selected:hover {
   background-color: var(--color-brand);
   border-color: var(--color-brand);
   color: var(--color-on-brand);
 }
 
-.selected:hover {
-  background-color: var(--color-brand-hover);
-  border-color: var(--color-brand-hover);
-  color: var(--color-on-brand);
-}
-
+/* ---------- 移除按钮 ---------- */
 .remove {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   padding: 0;
   background: transparent;
   border: none;
   border-radius: var(--radius-xs);
   color: inherit;
-  font-size: 12px;
-  line-height: 1;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.65;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
 }
 
 .remove:hover {
-  background-color: rgba(18, 33, 31, 0.12);
+  background-color: var(--color-fill-hover);
   opacity: 1;
+}
+
+.selected .remove:hover {
+  background-color: rgb(0 0 0 / 18%);
 }

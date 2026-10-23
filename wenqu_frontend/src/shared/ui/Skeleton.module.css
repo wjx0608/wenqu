@@ -1,17 +1,23 @@
 .base {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-surface-sunken);
-  border-radius: var(--radius-sm);
+  background-color: var(--color-skeleton);
+  border-radius: var(--radius-xs);
 }
 
+/* 高光取自 token，暗色下不再是刺眼的白色扫光 */
 .base::after {
   content: '';
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-  animation: shimmer 1.4s var(--ease-standard) infinite;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-skeleton-highlight),
+    transparent
+  );
+  animation: shimmer 1.5s var(--ease-standard) infinite;
 }
 
 .text {

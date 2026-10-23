@@ -48,8 +48,9 @@ export function Input({
       )}
 
       <div
-        className={[styles.control, error ? styles.invalid : ''].filter(Boolean).join(' ')}
-        data-disabled={disabled || undefined}
+        className={[styles.control, error ? styles.invalid : '', disabled ? styles.disabled : '']
+          .filter(Boolean)
+          .join(' ')}
       >
         {prefix && <span className={styles.affix}>{prefix}</span>}
         <input

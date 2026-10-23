@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 
+import { Icon } from './Icon'
 import styles from './Tag.module.css'
 
 export type TagVariant = 'default' | 'brand' | 'outline'
@@ -51,7 +52,7 @@ export function Tag({
       {children}
       {onRemove && (
         <button type="button" className={styles.remove} aria-label="移除" onClick={onRemove}>
-          ×
+          <Icon name="close" size={12} />
         </button>
       )}
     </span>

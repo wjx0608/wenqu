@@ -31,6 +31,7 @@ export function Button({
     styles.base,
     styles[variant],
     styles[size],
+    loading ? styles.loading : '',
     fullWidth ? styles.fullWidth : '',
     className,
   ]

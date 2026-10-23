@@ -58,7 +58,10 @@
   --color-warning: #8f622a;
   --color-warning-soft: #f6eedd;
   --color-danger: #a64438;
+  --color-danger-hover: #933a2f;
+  --color-danger-active: #7f3128;
   --color-danger-soft: #f8e9e5;
+  --color-on-danger: #ffffff;
 
   /* ---------- 语义色 · 其他填充 ---------- */
   --color-code-bg: #edf1ec;
@@ -70,6 +73,9 @@
 
   --color-scrollbar-thumb: #c6d3cb;
   --color-scrollbar-thumb-hover: #a9bab2;
+
+  /* 通用轻填充：用于图标按钮、标签移除等中性 hover 底 */
+  --color-fill-hover: rgba(31, 43, 41, 0.07);
 
   /* ---------- 字体 ---------- */
   --font-sans:
@@ -125,6 +131,7 @@
   --shadow-sm: 0 2px 6px rgba(31, 43, 41, 0.06);
   --shadow-md: 0 10px 28px rgba(31, 43, 41, 0.09);
   --focus-ring: 0 0 0 3px rgba(74, 107, 111, 0.24);
+  --focus-ring-danger: 0 0 0 3px rgba(166, 68, 56, 0.18);
 
   /* ---------- 布局 ---------- */
   --layout-header: 60px;
@@ -183,7 +190,10 @@
   --color-warning: #cfa066;
   --color-warning-soft: #2a2214;
   --color-danger: #d08070;
+  --color-danger-hover: #dd9a8c;
+  --color-danger-active: #e6aea2;
   --color-danger-soft: #2c1a16;
+  --color-on-danger: #241310;
 
   --color-code-bg: #121a19;
   --color-skeleton: #1d2725;
@@ -195,8 +205,11 @@
   --color-scrollbar-thumb: #31413c;
   --color-scrollbar-thumb-hover: #42544e;
 
+  --color-fill-hover: rgba(230, 237, 234, 0.09);
+
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
   --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.5);
   --focus-ring: 0 0 0 3px rgba(131, 171, 170, 0.32);
+  --focus-ring-danger: 0 0 0 3px rgba(208, 128, 112, 0.28);
 }
