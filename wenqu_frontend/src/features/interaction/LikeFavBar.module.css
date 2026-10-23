@@ -1,0 +1,29 @@
+.bar {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.compact .action {
+  font-size: var(--text-xs);
+}
+
+.action:hover {
+  color: var(--color-text);
+}
+
+.action.active {
+  color: var(--color-danger);
+}
+
+.action.active:last-child {
+  color: var(--color-warning);
+}
