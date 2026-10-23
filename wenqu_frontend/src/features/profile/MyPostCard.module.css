@@ -1,0 +1,9 @@
+.wrap {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+}

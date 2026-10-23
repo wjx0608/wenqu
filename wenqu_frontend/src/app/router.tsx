@@ -8,6 +8,8 @@ import { HomePage } from '@/features/feed/HomePage'
 import { PostDetailPage } from '@/features/post/PostDetailPage'
 import { EditorPage } from '@/features/editor/EditorPage'
 import { RequireAuth } from '@/features/auth/RequireAuth'
+import { EditProfilePage } from '@/features/profile/EditProfilePage'
+import { ProfilePage } from '@/features/profile/ProfilePage'
 import { AppLayout } from '@/layouts/AppLayout'
 
 const placeholder = (text: string) => <div>{text}</div>
@@ -27,7 +29,22 @@ export const router = createBrowserRouter([
           </RequireAuth>
         ),
       },
-      { path: '/profile', element: placeholder('我的 · 重构中') },
+      {
+        path: '/profile',
+        element: (
+          <RequireAuth>
+            <ProfilePage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/profile/edit',
+        element: (
+          <RequireAuth>
+            <EditProfilePage />
+          </RequireAuth>
+        ),
+      },
       { path: '/dev/ui', element: <UiGallery /> },
     ],
   },
