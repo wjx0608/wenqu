@@ -1,16 +1,22 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
-  max-width: var(--layout-page-max);
-  margin: 0 auto;
-  padding: var(--space-10) var(--space-6) var(--space-16);
+  gap: var(--space-12);
 }
 
+/* ---------- 页头 ---------- */
 .header {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-brand);
 }
 
 .title {
@@ -18,22 +24,45 @@
 }
 
 .subtitle {
+  max-width: 46em;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 
+/* ---------- 分节 ---------- */
 .section {
   display: flex;
   flex-direction: column;
+  gap: var(--space-5);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   gap: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-width) solid var(--color-divider);
 }
 
 .sectionTitle {
-  padding-bottom: var(--space-2);
-  border-bottom: var(--border-width) solid var(--color-border);
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
+  font-size: var(--text-xl);
+}
+
+.sectionNote {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- 示例分组 ---------- */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.groupLabel {
+  font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-muted);
 }
@@ -47,38 +76,93 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--space-4);
-}
-
-.caption {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
 }
 
 .narrow {
   width: 240px;
 }
 
-.cardBody {
+.note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- 色板 ---------- */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+
+.swatchItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.swatchChip {
+  height: 44px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.swatchLabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-strong);
+}
+
+.swatchCode {
+  padding: 0;
+  background-color: transparent;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 图标 ---------- */
+.icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--space-3);
+}
+
+.iconItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 卡片内排版 ---------- */
+.stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
 .cardTitle {
-  font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--weight-medium);
   color: var(--color-text-strong);
 }
 
-.cardMeta {
+.innerPad {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-2);
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
+  padding: var(--space-4);
 }
 
 .avatarRow {
@@ -87,13 +171,11 @@
   gap: var(--space-3);
 }
 
-.feedSkeleton {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.skeletonItem {
+.feedItem {
   display: flex;
   gap: var(--space-3);
+}
+
+.grow {
+  flex: 1;
 }
