@@ -44,6 +44,7 @@
   --color-text: #3d4a47;
   --color-text-muted: #5f6f68;
   --color-text-disabled: #9aa69f;
+  --color-text-placeholder: #8b9a93;
   --color-text-inverse: #f7faf8;
 
   /* ---------- 语义色 · 描边 ---------- */
@@ -63,6 +64,12 @@
   --color-code-bg: #edf1ec;
   --color-skeleton: #e4eae4;
   --color-skeleton-highlight: #f3f7f2;
+
+  --color-selection-bg: #cfe0dc;
+  --color-selection-text: #1f2b29;
+
+  --color-scrollbar-thumb: #c6d3cb;
+  --color-scrollbar-thumb-hover: #a9bab2;
 
   /* ---------- 字体 ---------- */
   --font-sans:
@@ -164,6 +171,7 @@
   --color-text: #b3c2bc;
   --color-text-muted: #7f938c;
   --color-text-disabled: #52625c;
+  --color-text-placeholder: #6b7d76;
   --color-text-inverse: #0f1615;
 
   --color-border: #28332f;
@@ -180,6 +188,12 @@
   --color-code-bg: #121a19;
   --color-skeleton: #1d2725;
   --color-skeleton-highlight: #27322f;
+
+  --color-selection-bg: #2c4342;
+  --color-selection-text: #e6edea;
+
+  --color-scrollbar-thumb: #31413c;
+  --color-scrollbar-thumb-hover: #42544e;
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
