@@ -1,57 +1,68 @@
 /**
  * 问渠设计 token
- * 色系：墨青（brand）+ 宣纸白（neutral），与暖橙奶油色调明确区分。
+ * 色系：天青（brand）× 竹纸（neutral），苔绿为缀；暗色为「黛底青辉」。
  * 约定：组件只消费语义变量（--color-*），不直接使用色阶（--brand-*）。
+ * 对比度：正文 / 链接 / 品牌语义色对底色的对比度均 ≥ 4.5:1（WCAG AA）。
  */
 
 :root {
   color-scheme: light;
 
-  /* ---------- 品牌色阶 · 墨青 ---------- */
-  --brand-50: #edf5f3;
-  --brand-100: #d6e8e4;
-  --brand-200: #aecfc9;
-  --brand-300: #82b3ab;
-  --brand-400: #509387;
-  --brand-500: #2a6f66;
-  --brand-600: #1f5f58;
-  --brand-700: #184c46;
-  --brand-800: #113936;
-  --brand-900: #0b2825;
+  /* ---------- 品牌色阶 · 天青 ---------- */
+  --brand-50: #eef3f3;
+  --brand-100: #dbe6e5;
+  --brand-200: #b9cdcc;
+  --brand-300: #8faeae;
+  --brand-400: #688c8d;
+  --brand-500: #4a6b6f;
+  --brand-600: #3b575b;
+  --brand-700: #2f4548;
+  --brand-800: #243436;
+  --brand-900: #182425;
 
-  /* ---------- 语义色 ---------- */
-  --color-brand: var(--brand-600);
-  --color-brand-hover: var(--brand-700);
-  --color-brand-active: var(--brand-800);
+  /* ---------- 语义色 · 品牌 ---------- */
+  --color-brand: var(--brand-500);
+  --color-brand-hover: var(--brand-600);
+  --color-brand-active: var(--brand-700);
   --color-brand-soft: var(--brand-50);
   --color-brand-soft-hover: var(--brand-100);
   --color-on-brand: #ffffff;
 
-  --color-accent: #3c6e8f;
-  --color-accent-soft: #e7eff5;
+  /* ---------- 语义色 · 苔绿缀色 ---------- */
+  --color-accent: #5c7c5a;
+  --color-accent-hover: #4a6548;
+  --color-accent-soft: #e9efe4;
 
-  --color-bg: #f6f7f5;
+  /* ---------- 语义色 · 背景与表面 ---------- */
+  --color-bg: #f3f6f3;
   --color-surface: #ffffff;
-  --color-surface-sunken: #edf0ed;
-  --color-surface-overlay: rgba(18, 33, 31, 0.32);
+  --color-surface-sunken: #e8eee9;
+  --color-surface-overlay: rgba(31, 43, 41, 0.32);
 
-  --color-text-strong: #12211f;
-  --color-text: #33413f;
-  --color-text-muted: #6a7a77;
-  --color-text-inverse: #f7faf9;
+  /* ---------- 语义色 · 文字 ---------- */
+  --color-text-strong: #1f2b29;
+  --color-text: #3d4a47;
+  --color-text-muted: #5f6f68;
+  --color-text-disabled: #9aa69f;
+  --color-text-inverse: #f7faf8;
 
-  --color-border: #dde3e0;
-  --color-border-strong: #c6cfcb;
-  --color-divider: rgba(18, 33, 31, 0.08);
+  /* ---------- 语义色 · 描边 ---------- */
+  --color-border: #d8e0da;
+  --color-border-strong: #b9c6bd;
+  --color-divider: rgba(31, 43, 41, 0.08);
 
-  --color-success: #2f7d5a;
-  --color-success-soft: #e8f3ed;
-  --color-warning: #b07b2e;
-  --color-warning-soft: #f8f0e0;
-  --color-danger: #a8433a;
-  --color-danger-soft: #f8eae8;
+  /* ---------- 语义色 · 状态 ---------- */
+  --color-success: #3f7a52;
+  --color-success-soft: #e7f1e8;
+  --color-warning: #8f622a;
+  --color-warning-soft: #f6eedd;
+  --color-danger: #a64438;
+  --color-danger-soft: #f8e9e5;
 
-  --color-code-bg: #f1f3f1;
+  /* ---------- 语义色 · 其他填充 ---------- */
+  --color-code-bg: #edf1ec;
+  --color-skeleton: #e4eae4;
+  --color-skeleton-highlight: #f3f7f2;
 
   /* ---------- 字体 ---------- */
   --font-sans:
@@ -60,7 +71,7 @@
   --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', 'Menlo', monospace;
 
-  /* ---------- 字号 / 行高 ---------- */
+  /* ---------- 字号 / 行高（模块化排版阶） ---------- */
   --text-xs: 12px;
   --text-sm: 13px;
   --text-base: 15px;
@@ -103,10 +114,10 @@
 
   /* ---------- 描边与阴影 ---------- */
   --border-width: 1px;
-  --shadow-xs: 0 1px 2px rgba(18, 33, 31, 0.05);
-  --shadow-sm: 0 2px 6px rgba(18, 33, 31, 0.06);
-  --shadow-md: 0 8px 24px rgba(18, 33, 31, 0.08);
-  --focus-ring: 0 0 0 3px rgba(31, 95, 88, 0.22);
+  --shadow-xs: 0 1px 2px rgba(31, 43, 41, 0.05);
+  --shadow-sm: 0 2px 6px rgba(31, 43, 41, 0.06);
+  --shadow-md: 0 10px 28px rgba(31, 43, 41, 0.09);
+  --focus-ring: 0 0 0 3px rgba(74, 107, 111, 0.24);
 
   /* ---------- 布局 ---------- */
   --layout-header: 60px;
@@ -132,41 +143,46 @@
 [data-theme='dark'] {
   color-scheme: dark;
 
-  --color-brand: #6fbfb1;
-  --color-brand-hover: #85cdbf;
-  --color-brand-active: #9ad9cd;
-  --color-brand-soft: #17322e;
-  --color-brand-soft-hover: #1d413c;
-  --color-on-brand: #06201c;
+  /* ---------- 语义色 · 品牌（黛底青辉） ---------- */
+  --color-brand: #83abaa;
+  --color-brand-hover: #97bcbb;
+  --color-brand-active: #abcac9;
+  --color-brand-soft: #1b2a29;
+  --color-brand-soft-hover: #223433;
+  --color-on-brand: #0e1a19;
 
-  --color-accent: #7fa9c6;
-  --color-accent-soft: #1a2a35;
+  --color-accent: #94b18d;
+  --color-accent-hover: #a6c09f;
+  --color-accent-soft: #1d2a1e;
 
-  --color-bg: #0d1514;
-  --color-surface: #16211f;
-  --color-surface-sunken: #101b19;
+  --color-bg: #0f1615;
+  --color-surface: #17201f;
+  --color-surface-sunken: #121a19;
   --color-surface-overlay: rgba(0, 0, 0, 0.56);
 
-  --color-text-strong: #e9f1ee;
-  --color-text: #c3d2ce;
-  --color-text-muted: #8ca29d;
-  --color-text-inverse: #0d1514;
+  --color-text-strong: #e6edea;
+  --color-text: #b3c2bc;
+  --color-text-muted: #7f938c;
+  --color-text-disabled: #52625c;
+  --color-text-inverse: #0f1615;
 
-  --color-border: #26332f;
-  --color-border-strong: #35443f;
-  --color-divider: rgba(233, 241, 238, 0.08);
+  --color-border: #28332f;
+  --color-border-strong: #3a4742;
+  --color-divider: rgba(230, 237, 234, 0.08);
 
-  --color-success: #63b98e;
-  --color-success-soft: #16302a;
-  --color-warning: #d5a45e;
-  --color-warning-soft: #2f2718;
-  --color-danger: #d98b81;
-  --color-danger-soft: #331e1b;
+  --color-success: #74b389;
+  --color-success-soft: #16281e;
+  --color-warning: #cfa066;
+  --color-warning-soft: #2a2214;
+  --color-danger: #d08070;
+  --color-danger-soft: #2c1a16;
 
-  --color-code-bg: #101b19;
+  --color-code-bg: #121a19;
+  --color-skeleton: #1d2725;
+  --color-skeleton-highlight: #27322f;
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --focus-ring: 0 0 0 3px rgba(111, 191, 177, 0.32);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --focus-ring: 0 0 0 3px rgba(131, 171, 170, 0.32);
 }
