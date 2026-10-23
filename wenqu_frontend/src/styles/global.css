@@ -229,6 +229,20 @@ html {
   background: transparent;
 }
 
+/* ---------- 主题切换过渡 ---------- */
+/* 仅在 ThemeSync 切换主题时短暂挂到 html 上，平时不参与过渡，避免影响交互动效 */
+@media (prefers-reduced-motion: no-preference) {
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color var(--duration-slow) var(--ease-standard),
+      border-color var(--duration-slow) var(--ease-standard),
+      color var(--duration-slow) var(--ease-standard) !important;
+  }
+}
+
 /* ---------- 动效偏好 ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,

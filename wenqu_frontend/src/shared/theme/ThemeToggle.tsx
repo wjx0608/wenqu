@@ -18,7 +18,9 @@ export function ThemeToggle() {
       aria-label={label}
       title={label}
     >
-      <Icon name={isDark ? 'moon' : 'sun'} />
+      <span key={isDark ? 'moon' : 'sun'} className={styles.icon}>
+        <Icon name={isDark ? 'moon' : 'sun'} />
+      </span>
     </button>
   )
 }
