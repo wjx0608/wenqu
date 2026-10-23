@@ -4,7 +4,17 @@ import type { ReactNode, SVGProps } from 'react'
  * 图标统一规格：24 栅格、1.5px 描边、圆头圆角、颜色跟随 currentColor。
  * 新增图标只需在 paths 中补一条，禁止在业务组件里内联 svg。
  */
-export type IconName = 'sun' | 'moon' | 'search' | 'penLine' | 'arrowLeft' | 'refresh' | 'close'
+export type IconName =
+  | 'sun'
+  | 'moon'
+  | 'search'
+  | 'penLine'
+  | 'arrowLeft'
+  | 'refresh'
+  | 'close'
+  | 'home'
+  | 'bookmark'
+  | 'user'
 
 const paths: Record<IconName, ReactNode> = {
   sun: (
@@ -44,6 +54,19 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <path d="m6 6 12 12" />
       <path d="M18 6 6 18" />
+    </>
+  ),
+  home: (
+    <>
+      <path d="m4 10.5 8-6.5 8 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z" />
+      <path d="M9.5 21v-6h5v6" />
+    </>
+  ),
+  bookmark: <path d="M6.5 3h11a1 1 0 0 1 1 1v17l-6.5-4.5L5.5 21V4a1 1 0 0 1 1-1Z" />,
+  user: (
+    <>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20a7 7 0 0 1 14 0" />
     </>
   ),
 }

@@ -136,9 +136,7 @@
   /* ---------- 布局 ---------- */
   --layout-header: 60px;
   --layout-nav: 236px;
-  --layout-aside: 360px;
   --layout-content-max: 760px;
-  --layout-page-max: 1440px;
 
   /* ---------- 动效 ---------- */
   --duration-fast: 120ms;

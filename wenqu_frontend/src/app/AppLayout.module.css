@@ -5,10 +5,11 @@
     'nav main';
   grid-template-columns: var(--layout-nav) minmax(0, 1fr);
   grid-template-rows: var(--layout-header) minmax(0, 1fr);
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--color-bg);
 }
 
+/* ---------- 顶栏 ---------- */
 .header {
   position: sticky;
   top: 0;
@@ -17,6 +18,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-6);
+  height: var(--layout-header);
   padding: 0 var(--space-6);
   background-color: var(--color-surface);
   border-bottom: var(--border-width) solid var(--color-border);
@@ -24,23 +26,29 @@
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
-  letter-spacing: var(--tracking-wide);
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
   color: var(--color-text-strong);
 }
 
 .brand:hover {
-  color: var(--color-brand);
+  color: var(--color-text-strong);
   text-decoration: none;
 }
 
+.brandName {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+}
+
 .brandNote {
-  font-family: var(--font-sans);
+  padding-left: var(--space-3);
+  border-left: var(--border-width) solid var(--color-divider);
   font-size: var(--text-xs);
-  letter-spacing: 0;
+  letter-spacing: var(--tracking-wide);
   color: var(--color-text-muted);
 }
 
@@ -56,31 +64,42 @@
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .search:hover {
   background-color: var(--color-surface);
-  border-color: var(--color-border);
+  border-color: var(--color-border-strong);
   color: var(--color-text);
   text-decoration: none;
 }
 
-.headerActions {
+.searchText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.actions {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   margin-left: auto;
 }
 
+/* ---------- 侧栏 ---------- */
 .nav {
   position: sticky;
   top: var(--layout-header);
   grid-area: nav;
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
-  height: calc(100vh - var(--layout-header));
-  padding: var(--space-6) var(--space-3);
+  gap: var(--space-6);
+  height: calc(100dvh - var(--layout-header));
+  padding: var(--space-6) var(--space-3) var(--space-8);
   overflow-y: auto;
   border-right: var(--border-width) solid var(--color-border);
 }
@@ -88,71 +107,127 @@
 .navGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: 2px;
 }
 
 .navLabel {
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-1) var(--space-3) var(--space-2);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-muted);
 }
 
 .navItem {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  height: 36px;
+  gap: var(--space-3);
+  height: 38px;
   padding: 0 var(--space-3);
   border-radius: var(--radius-sm);
   font-size: var(--text-base);
   color: var(--color-text);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.navIcon {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .navItem:hover {
-  background-color: var(--color-surface-sunken);
+  background-color: var(--color-fill-hover);
   color: var(--color-text-strong);
   text-decoration: none;
 }
 
-.navItemActive {
-  background-color: var(--color-brand-soft);
+.navItem:hover .navIcon {
+  color: var(--color-text);
+}
+
+/* 激活态用左侧一道短竖线标记，比整块底色更克制 */
+.navItemActive,
+.navItemActive:hover {
+  background-color: transparent;
   color: var(--color-brand);
   font-weight: var(--weight-medium);
 }
 
-.navItemActive:hover {
-  background-color: var(--color-brand-soft);
+.navItemActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand);
+}
+
+.navItemActive .navIcon,
+.navItemActive:hover .navIcon {
   color: var(--color-brand);
 }
 
-.navDivider {
-  margin: var(--space-4) var(--space-3);
-  border: none;
-  border-top: var(--border-width) solid var(--color-divider);
+.navSubItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 32px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 
+.navSubItem:hover {
+  background-color: var(--color-fill-hover);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-border-strong);
+}
+
+.navSubItem:hover .navDot {
+  background-color: var(--color-brand);
+}
+
+.navFoot {
+  margin-top: auto;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+}
+
+/* ---------- 内容区 ---------- */
 .main {
   grid-area: main;
-  padding: var(--space-8) var(--space-8) var(--space-16);
+  padding: var(--space-8) var(--space-6) var(--space-16);
 }
 
 .mainInner {
   width: 100%;
-  max-width: 1040px;
+  max-width: var(--layout-content-max);
   margin: 0 auto;
 }
 
+/* ---------- 窄屏：侧栏改为顶栏下方的横向导航 ---------- */
 @media (max-width: 960px) {
   .shell {
     grid-template-areas:
       'header'
+      'nav'
       'main';
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .nav {
-    display: none;
+    grid-template-rows: var(--layout-header) auto minmax(0, 1fr);
   }
 
   .header {
@@ -160,9 +235,54 @@
     padding: 0 var(--space-4);
   }
 
+  .brandNote,
+  .searchText {
+    display: none;
+  }
+
   .search {
-    width: 100%;
-    max-width: 240px;
+    width: auto;
+    padding: 0 var(--space-2);
+    background-color: transparent;
+  }
+
+  .nav {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-1);
+    height: auto;
+    padding: var(--space-2) var(--space-3);
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: var(--border-width) solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  .navGroup {
+    flex-direction: row;
+    gap: var(--space-1);
+  }
+
+  .navLabel,
+  .navSubItem,
+  .navFoot {
+    display: none;
+  }
+
+  .navItem {
+    height: 34px;
+    padding: 0 var(--space-3);
+    white-space: nowrap;
+  }
+
+  .navItemActive,
+  .navItemActive:hover {
+    background-color: var(--color-brand-soft);
+  }
+
+  .navItemActive::before {
+    display: none;
   }
 
   .main {
