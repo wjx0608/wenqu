@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -41,8 +42,11 @@ public class RagQueryService {
 
         // 系统提示：限定只依据提供的上下文作答，无法确定需明确说明
         String system = "你是中文知识助手。只能依据提供的知文上下文回答；无法确定的请说明不确定。";
-        // 用户消息：包含问题和召回到的上下文
-        String user = "问题：" + question + "\n\n上下文如下（可能不完整）：\n" + context + "\n\n请基于以上上下文作答。";
+        // 用户消息：说明上下文是"检索出的片段集合"，避免模型把片段不连续误判为文章被截断
+        String user = "问题：" + question
+                + "\n\n以下是从当前知文中按语义检索到的若干片段（已按原文顺序排列，但可能不连续、不覆盖全文）：\n"
+                + context
+                + "\n\n请仅依据这些片段作答；片段中未出现的内容，请直接说明「上下文未提及」，不要推测文章结构是否完整。";
 
         return chatClient
                 .prompt() // 构建对话
@@ -67,16 +71,26 @@ public class RagQueryService {
         List<Document> docs = vectorStore.similaritySearch(
                 SearchRequest.builder().query(query).topK(fetchK).build() // 语义相似检索
         );
-        List<String> out = new ArrayList<>(topK);
+        List<Document> picked = new ArrayList<>(topK);
         for (Document d : docs) {
             Object pid = d.getMetadata().get("postId");
             if (pid != null && postId.equals(String.valueOf(pid))) { // 仅保留当前帖子对应的切片
                 String txt = d.getText();
                 if (txt != null && !txt.isEmpty()) {
-                    out.add(txt);
-                    if (out.size() >= topK) break; // 只取前 topK 个上下文
+                    picked.add(d);
+                    if (picked.size() >= topK) break; // 只取前 topK 个上下文
                 }
             }
+        }
+        // 按切片在原文中的位置重新排序：检索结果是按相似度排序的，
+        // 直接拼接会让模型看到"章节跳跃"，误判为内容缺失或错序
+        picked.sort(Comparator.comparingInt(d -> {
+            Object pos = d.getMetadata().get("position");
+            return pos instanceof Number n ? n.intValue() : Integer.MAX_VALUE;
+        }));
+        List<String> out = new ArrayList<>(picked.size());
+        for (Document d : picked) {
+            out.add(d.getText());
         }
         return out;
     }
