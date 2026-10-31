@@ -54,6 +54,13 @@
   outline: none;
 }
 
+/* 聚焦样式由 .control:focus-within 统一处理，避免双层描边 */
+.input:focus,
+.input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .input::placeholder {
   color: var(--color-text-placeholder);
 }

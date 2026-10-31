@@ -92,6 +92,13 @@ samp {
   border-radius: var(--radius-sm);
 }
 
+/* 输入类控件的聚焦样式由各自容器负责（border + box-shadow），
+   元素本身不再画 outline，否则会出现"框套框" */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
 /* ---------- 滚动条 ---------- */
 * {
   scrollbar-width: thin;
