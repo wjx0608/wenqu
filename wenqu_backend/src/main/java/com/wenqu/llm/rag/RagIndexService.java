@@ -27,6 +27,11 @@ import java.util.*;
 @RequiredArgsConstructor
 public class RagIndexService {
     private static final Logger log = LoggerFactory.getLogger(RagIndexService.class);
+    /**
+     * 单次 embedding 请求的最大切片数。
+     * <p>阿里云百炼 text-embedding-v4 限制 input.contents 不超过 10 条，超出直接 400。</p>
+     */
+    private static final int EMBEDDING_BATCH_SIZE = 10;
     // 向量库封装（Elasticsearch VectorStore），负责写入/检索向量
     private final VectorStore vectorStore;
     // 数据访问：根据 postId 查询知文详情（含 contentUrl、指纹等）
@@ -97,10 +102,15 @@ public class RagIndexService {
             docs.add(new Document(chunks.get(i), meta));
         }
         try {
-            // 批量写入向量库
-            vectorStore.add(docs);
+            // 分批写入向量库：百炼 text-embedding-v4 单次 embedding 上限为 10 条，
+            // 一次提交全部切片会返回 400（batch size is invalid）
+            for (int i = 0; i < docs.size(); i += EMBEDDING_BATCH_SIZE) {
+                int end = Math.min(i + EMBEDDING_BATCH_SIZE, docs.size());
+                vectorStore.add(new ArrayList<>(docs.subList(i, end)));
+                log.debug("Indexed post {} chunks {}-{}/{}", postId, i, end - 1, docs.size());
+            }
         } catch (Exception e) {
-            log.error("VectorStore add failed: {}", e.getMessage());
+            log.error("VectorStore add failed for post {}: {}", postId, e.getMessage());
             return 0;
         }
         // 返回本次写入的切片数量
