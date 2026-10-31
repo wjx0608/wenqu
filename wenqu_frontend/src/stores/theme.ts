@@ -12,6 +12,10 @@ function applyTheme(mode: ThemeMode, withTransition: boolean) {
     window.setTimeout(() => root.classList.remove('theme-transition'), 240)
   }
   root.dataset.theme = mode
+  // 同步移动端浏览器地址栏配色
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', mode === 'dark' ? '#0f1615' : '#f3f6f3')
 }
 
 function loadMode(): ThemeMode {

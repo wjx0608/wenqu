@@ -1,0 +1,15 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="问渠">
+  <defs>
+    <linearGradient id="wq" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5D858A" />
+      <stop offset="1" stop-color="#2F4548" />
+    </linearGradient>
+  </defs>
+  <!-- 底：天青 → 墨青 -->
+  <rect width="64" height="64" rx="18" fill="url(#wq)" />
+  <!-- 源头 -->
+  <circle cx="32" cy="17.5" r="4.2" fill="#F1F5F4" />
+  <!-- 渠水：两道波纹 -->
+  <path d="M12 32.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" />
+  <path d="M12 45.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" opacity="0.7" />
+</svg>
