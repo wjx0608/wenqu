@@ -5,11 +5,8 @@
       <stop offset="1" stop-color="#2F4548" />
     </linearGradient>
   </defs>
-  <!-- 底：天青 → 墨青 -->
   <rect width="64" height="64" rx="18" fill="url(#wq)" />
-  <!-- 源头 -->
-  <circle cx="32" cy="17.5" r="4.2" fill="#F1F5F4" />
   <!-- 渠水：两道波纹 -->
-  <path d="M12 32.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" />
-  <path d="M12 45.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" opacity="0.7" />
+  <path d="M12 25.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" />
+  <path d="M12 38.5c6.4-7.5 13.6-7.5 20 0s13.6 7.5 20 0" stroke="#F1F5F4" stroke-width="5.6" stroke-linecap="round" opacity="0.7" />
 </svg>

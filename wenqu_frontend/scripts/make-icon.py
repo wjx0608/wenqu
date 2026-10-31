@@ -46,11 +46,6 @@ img.paste(base, (0, 0), mask)
 
 draw = ImageDraw.Draw(img)
 
-# 源头
-dot = 4.2 / 64 * SIZE
-cx, cy = SIZE / 2, 17.5 / 64 * SIZE
-draw.ellipse([cx - dot, cy - dot, cx + dot, cy + dot], fill=INK)
-
 # 两道波纹（三次贝塞尔，单位换算到 180）
 def wave(y_center, opacity):
     scale = SIZE / 64
@@ -86,8 +81,8 @@ def wave(y_center, opacity):
     img.alpha_composite(layer)
 
 
-wave(32.5, 1.0)
-wave(45.5, 0.7)
+wave(25.5, 1.0)
+wave(38.5, 0.7)
 
 OUTPUT = Path(__file__).resolve().parent.parent / "public" / "apple-touch-icon.png"
 img.save(OUTPUT)
