@@ -1,6 +1,7 @@
 package com.wenqu.user.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +12,29 @@ import com.wenqu.user.service.UserService;
 import com.wenqu.user.mapper.UserMapper;
 import com.wenqu.user.domain.User;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+
+    /**
+     * 标识脱敏：手机号保留前 3 后 4，邮箱保留 @ 前首字符。
+     */
+    private static String maskIdentifier(String value) {
+        if (value == null || value.isBlank()) {
+            return value;
+        }
+        if (value.contains("@")) {
+            int at = value.indexOf('@');
+            return value.substring(0, Math.min(1, at)) + "***" + value.substring(at);
+        }
+        if (value.length() < 7) {
+            return value;
+        }
+        return value.substring(0, 3) + "****" + value.substring(value.length() - 4);
+    }
 
     /**
      * 根据手机号查询用户。
@@ -58,7 +77,10 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional(readOnly = true)
     public boolean existsByPhone(String phone) {
-        return userMapper.existsByPhone(phone);
+        boolean exists = userMapper.existsByPhone(phone);
+        // 注意：SELECT EXISTS 的行数恒为 1，真正的结果在这个布尔值上
+        log.debug("existsByPhone({}) -> {}", maskIdentifier(phone), exists);
+        return exists;
     }
 
     /**
@@ -69,7 +91,9 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional(readOnly = true)
     public boolean existsByEmail(String email) {
-        return userMapper.existsByEmail(email);
+        boolean exists = userMapper.existsByEmail(email);
+        log.debug("existsByEmail({}) -> {}", maskIdentifier(email), exists);
+        return exists;
     }
 
     /**
