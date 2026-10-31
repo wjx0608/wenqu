@@ -21,4 +21,15 @@ export default defineConfig({
       },
     },
   },
+  // 生产构建后用 npm run preview 托管，同样需要代理与 Host 放行，便于隧道演示
+  preview: {
+    port: 5173,
+    allowedHosts: ['.cpolar.cn', '.cpolar.top'],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
+  },
 })
