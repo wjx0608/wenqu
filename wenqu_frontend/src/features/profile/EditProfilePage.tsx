@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { updateProfile, uploadAvatar } from '@/features/profile/api'
 import { TagInput } from '@/features/editor/TagInput'
@@ -27,6 +28,7 @@ function parseTags(tagJson?: string | null): string[] {
 }
 
 export function EditProfilePage() {
+  const navigate = useNavigate()
   const user = useAuthStore((s) => s.user)
   const refreshMe = useAuthStore((s) => s.refreshMe)
   const fileRef = useRef<HTMLInputElement>(null)
@@ -80,6 +82,7 @@ export function EditProfilePage() {
       })
       await refreshMe()
       toast.success('资料已保存')
+      navigate('/profile', { replace: true })
     } catch (e) {
       toast.error(isApiError(e) ? e.message : '保存失败，请稍后再试')
     } finally {
@@ -154,6 +157,9 @@ export function EditProfilePage() {
         </div>
 
         <div className={styles.actions}>
+          <Button variant="ghost" onClick={() => navigate('/profile')}>
+            取消
+          </Button>
           <Button loading={saving} onClick={handleSave}>
             保存
           </Button>
