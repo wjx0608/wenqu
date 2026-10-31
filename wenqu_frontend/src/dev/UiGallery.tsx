@@ -60,6 +60,15 @@ export function UiGallery() {
         <Input label="手机号" placeholder="请输入手机号" leftIcon="phone" />
         <Input label="验证码" error="验证码错误" placeholder="6 位数字" />
         <Textarea label="简介" placeholder="介绍一下自己" hint="最多 120 字" />
+        <Textarea
+          label="简介（自动增高 + 字数计数）"
+          placeholder="输入多行内容会随内容长高"
+          rows={2}
+          autoResize
+          showCount
+          maxLength={120}
+          hint="超过最大高度后内部滚动"
+        />
       </Section>
 
       <Section title="标签 Tag">

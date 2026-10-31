@@ -121,9 +121,11 @@ export function EditProfilePage() {
           <Textarea
             label="个人简介"
             value={bio}
-            rows={3}
+            rows={2}
+            autoResize
+            showCount
             maxLength={120}
-            placeholder="介绍一下自己"
+            placeholder="用一两句话介绍自己，会展示在个人主页"
             onChange={(e) => setBio(e.target.value)}
           />
           <Input label="学校" value={school} onChange={(e) => setSchool(e.target.value)} />
