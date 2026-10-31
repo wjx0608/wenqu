@@ -12,6 +12,7 @@ const navItems = [
   { to: '/', icon: 'home', label: '首页', end: true },
   { to: '/search', icon: 'search', label: '搜索' },
   { to: '/create', icon: 'compose', label: '创作' },
+  { to: '/learn', icon: 'book', label: '学习' },
   { to: '/profile', icon: 'user', label: '我的' },
 ] as const
 

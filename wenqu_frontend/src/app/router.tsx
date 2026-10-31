@@ -17,6 +17,9 @@ const SearchPage = lazy(() =>
 const EditorPage = lazy(() =>
   import('@/features/editor/EditorPage').then((m) => ({ default: m.EditorPage })),
 )
+const LearningPage = lazy(() =>
+  import('@/features/learn/LearningPage').then((m) => ({ default: m.LearningPage })),
+)
 const ProfilePage = lazy(() =>
   import('@/features/profile/ProfilePage').then((m) => ({ default: m.ProfilePage })),
 )
@@ -54,6 +57,7 @@ export const router = createBrowserRouter([
       { path: '/', element: pending(<HomePage />) },
       { path: '/post/:id', element: pending(<PostDetailPage />) },
       { path: '/search', element: pending(<SearchPage />) },
+      { path: '/learn', element: pending(<LearningPage />) },
       {
         path: '/create',
         element: (

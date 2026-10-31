@@ -64,6 +64,18 @@
   margin-bottom: var(--space-3);
 }
 
+/* 搜索命中高亮：后端在片段里返回 <em> 标签 */
+.title em,
+.description em {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-brand-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0 2px;
+}
+
 .meta {
   display: flex;
   align-items: center;
