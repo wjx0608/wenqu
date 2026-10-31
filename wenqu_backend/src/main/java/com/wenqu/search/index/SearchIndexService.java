@@ -116,8 +116,22 @@ public class SearchIndexService {
             doc.put("favorite_count", counts.getOrDefault("fav", 0L));
             doc.put("view_count", 0L);
 
+            // 联想字段支持多值：标题原文 + 标签，
+            // 这样输入标签（如 Redis）也能补全出相关标题，而不只是标题开头匹配
+            java.util.List<String> suggestInputs = new java.util.ArrayList<>();
             if (row.getTitle() != null && !row.getTitle().isBlank()) {
-                doc.put("title_suggest", row.getTitle());
+                suggestInputs.add(row.getTitle());
+            }
+            List<String> suggestTags = parseStringArray(row.getTags());
+            if (suggestTags != null) {
+                for (String t : suggestTags) {
+                    if (t != null && !t.isBlank() && !suggestInputs.contains(t)) {
+                        suggestInputs.add(t);
+                    }
+                }
+            }
+            if (!suggestInputs.isEmpty()) {
+                doc.put("title_suggest", suggestInputs);
             }
 
             // 刷新策略：wait_for，保证写入后即刻可检索
