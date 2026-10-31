@@ -82,7 +82,7 @@ export interface Profile {
   nickname: string
   avatar?: string | null
   bio?: string | null
-  zgId?: string | null
+  zhId?: string | null
   gender?: Gender | null
   birthday?: string | null
   school?: string | null
@@ -96,7 +96,7 @@ export interface ProfilePatchRequest {
   bio?: string
   gender?: Gender
   birthday?: string
-  zgId?: string
+  zhId?: string
   school?: string
   tagJson?: string
 }

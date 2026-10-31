@@ -34,7 +34,7 @@ export function EditProfilePage() {
   const [nickname, setNickname] = useState(user?.nickname ?? '')
   const [bio, setBio] = useState(user?.bio ?? '')
   const [school, setSchool] = useState(user?.school ?? '')
-  const [zgId, setZgId] = useState(user?.zhId ?? '')
+  const [zhId, setZhId] = useState(user?.zhId ?? '')
   const [gender, setGender] = useState<Gender>(user?.gender ?? 'UNKNOWN')
   const [birthday, setBirthday] = useState(user?.birthday ?? '')
   const [tags, setTags] = useState<string[]>(parseTags(user?.tagJson))
@@ -63,7 +63,7 @@ export function EditProfilePage() {
       toast.info('昵称不能为空')
       return
     }
-    if (zgId && !/^[a-zA-Z0-9_]{4,32}$/.test(zgId)) {
+    if (zhId && !/^[a-zA-Z0-9_]{4,32}$/.test(zhId)) {
       toast.info('问渠号仅支持 4-32 位字母、数字、下划线')
       return
     }
@@ -73,7 +73,7 @@ export function EditProfilePage() {
         nickname: nickname.trim(),
         bio: bio.trim() || undefined,
         school: school.trim() || undefined,
-        zgId: zgId.trim() || undefined,
+        zhId: zhId.trim() || undefined,
         gender,
         birthday: birthday || undefined,
         tagJson: tags.length > 0 ? JSON.stringify(tags) : undefined,
@@ -110,10 +110,10 @@ export function EditProfilePage() {
           <Input label="昵称" value={nickname} maxLength={24} onChange={(e) => setNickname(e.target.value)} />
           <Input
             label="问渠号"
-            value={zgId}
+            value={zhId}
             placeholder="4-32 位字母、数字、下划线"
             hint="设置后他人可通过问渠号找到你"
-            onChange={(e) => setZgId(e.target.value)}
+            onChange={(e) => setZhId(e.target.value)}
           />
           <Textarea
             label="个人简介"
