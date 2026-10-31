@@ -1,4 +1,4 @@
-# 问渠前端（wenqu_frontend）
+﻿# 问渠前端（wenqu_frontend）
 
 「问渠那得清如许，为有源头活水来」——技术内容分享平台前端。基于 React 19 + Vite + TypeScript 构建，对接 Spring Boot 后端 `/api/v1`。
 
@@ -57,4 +57,4 @@ npm run build        # 类型检查 + 生产构建
 - **认证**：RS256 双令牌（access 15min / refresh 7d），localStorage 持久化；401 时单例刷新并重试原请求，刷新失败自动清空登录态
 - **AI 伴读**：`fetch + ReadableStream` 手写解析 `text/event-stream`，逐字渲染 Markdown，`AbortController` 可随时中止
 - **发布流水线**：建草稿 → 图片预签名直传 OSS → 正文 .md 直传并回执（SHA-256 校验）→ 补元数据 → 发布
-- **主题**：亮 / 暗 / 跟随系统三态，`index.html` 内联脚本防首屏闪烁
+- **主题**：亮 / 暗两态切换，`index.html` 内联脚本防首屏闪烁

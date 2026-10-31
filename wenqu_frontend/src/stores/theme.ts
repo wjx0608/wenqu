@@ -1,60 +1,36 @@
-import { useEffect } from 'react'
 import { create } from 'zustand'
 
-export type ThemeMode = 'light' | 'dark' | 'system'
-export type ResolvedTheme = 'light' | 'dark'
+/** 主题只有明暗两态，同步落在 html[data-theme] 上 */
+export type ThemeMode = 'light' | 'dark'
 
 const THEME_KEY = 'wenqu_theme'
-const media = window.matchMedia('(prefers-color-scheme: dark)')
 
-function resolve(mode: ThemeMode): ResolvedTheme {
-  if (mode === 'system') return media.matches ? 'dark' : 'light'
-  return mode
-}
-
-function applyTheme(resolved: ResolvedTheme, withTransition: boolean) {
+function applyTheme(mode: ThemeMode, withTransition: boolean) {
   const root = document.documentElement
   if (withTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     root.classList.add('theme-transition')
     window.setTimeout(() => root.classList.remove('theme-transition'), 240)
   }
-  root.dataset.theme = resolved
+  root.dataset.theme = mode
 }
 
 function loadMode(): ThemeMode {
-  const raw = localStorage.getItem(THEME_KEY)
-  return raw === 'light' || raw === 'dark' || raw === 'system' ? raw : 'system'
+  return localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light'
 }
 
 interface ThemeState {
   mode: ThemeMode
-  resolved: ResolvedTheme
   setMode: (mode: ThemeMode) => void
+  /** 在明暗之间切换 */
+  toggle: () => void
 }
 
-export const useThemeStore = create<ThemeState>((set) => ({
+export const useThemeStore = create<ThemeState>((set, get) => ({
   mode: loadMode(),
-  resolved: resolve(loadMode()),
   setMode: (mode) => {
     localStorage.setItem(THEME_KEY, mode)
-    const resolved = resolve(mode)
-    applyTheme(resolved, true)
-    set({ mode, resolved })
+    applyTheme(mode, true)
+    set({ mode })
   },
+  toggle: () => get().setMode(get().mode === 'dark' ? 'light' : 'dark'),
 }))
-
-/** 跟随系统偏好变化（仅 mode === 'system' 时生效），挂载一次即可 */
-export function useThemeSync() {
-  const mode = useThemeStore((s) => s.mode)
-
-  useEffect(() => {
-    const onChange = () => {
-      if (useThemeStore.getState().mode !== 'system') return
-      const resolved = resolve('system')
-      applyTheme(resolved, true)
-      useThemeStore.setState({ resolved })
-    }
-    media.addEventListener('change', onChange)
-    return () => media.removeEventListener('change', onChange)
-  }, [mode])
-}
