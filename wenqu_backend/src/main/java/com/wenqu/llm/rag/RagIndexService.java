@@ -169,10 +169,17 @@ public class RagIndexService {
 
     /**
      * 拉取正文内容（Markdown 文本）。
+     * <p>
+     * 直接取字节再按 UTF-8 解码：OSS 返回的 Content-Type 不带 charset，
+     * 若交给 StringHttpMessageConverter 会按 ISO-8859-1 解读，中文会整体乱码。
      */
     private String fetchContent(String url) {
         try {
-            return http.getForObject(url, String.class);
+            byte[] bytes = http.getForObject(url, byte[].class);
+            if (bytes == null || bytes.length == 0) {
+                return null;
+            }
+            return new String(bytes, java.nio.charset.StandardCharsets.UTF_8);
         } catch (Exception e) {
             log.error("Fetch content failed: {}", e.getMessage());
             return null;
